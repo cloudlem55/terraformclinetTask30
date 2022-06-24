@@ -3,7 +3,7 @@ resource "aws_elb" "test-elb" {
   availability_zones = ["us-east-1a", "us-east-1b"]
 
   access_logs {
-    bucket   = aws_s3_bucket.Client_bucket.bucket
+    bucket   = aws_s3_bucket_acl.Client_bucket-abc.bucket
     interval = 60
   }
 
@@ -23,8 +23,8 @@ resource "aws_elb" "test-elb" {
   }
 
   health_check {
-    healthy_threshold   = 2
-    unhealthy_threshold = 2
+    healthy_threshold   = 3
+    unhealthy_threshold = 3
     timeout             = 3
     target              = "HTTP:8000/"
     interval            = 30
